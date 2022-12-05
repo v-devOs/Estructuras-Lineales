@@ -1,7 +1,5 @@
 package Listas.Estatica;
 
-import javax.swing.text.Position;
-
 public class Lista {
     private int lista[];
     private int start, end, totalDatos;
