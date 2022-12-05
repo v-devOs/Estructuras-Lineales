@@ -1,38 +1,36 @@
 package Listas.Dinamicas;
 
-public class ListaDoble {
-    private NodoDoble start, end, auxiliarBusqueda, auxiliarIntercambio;
+
+public class ListaSimpleCircular {
+    private NodoSimple start, end, auxiliarIntercambio, auxiliarBusqueda;
 
     public void input(int dato){
-        NodoDoble nodoInput = new NodoDoble(dato);
+        NodoSimple nodoInput = new NodoSimple(dato);
 
-        if(start == null && end == null){
+        if(start == null){
             start = end = nodoInput;
+            end.nodoSiguiente = start;
         }
         else if(start.dato > dato){
             auxiliarIntercambio = start;
             start = nodoInput;
             start.nodoSiguiente = auxiliarIntercambio;
-            auxiliarIntercambio.nodoAnterior = start;
         }
         else if(end.dato < dato){
-            auxiliarIntercambio = end;
+            end.nodoSiguiente = nodoInput;
             end = nodoInput;
-            end.nodoAnterior = auxiliarIntercambio;
-            auxiliarIntercambio.nodoSiguiente = end;
+            end.nodoSiguiente = start;
         }
         else{
             buscarPosicion(dato);
             auxiliarIntercambio = auxiliarBusqueda.nodoSiguiente;
             nodoInput.nodoSiguiente = auxiliarIntercambio;
-            nodoInput.nodoAnterior = auxiliarBusqueda;
             auxiliarBusqueda.nodoSiguiente = nodoInput;
-
         }
     }
 
     public void output(int dato){
-        if(start == null && end == null){
+        if(start == null){
             System.out.println("Underflow");
         }
         else if(start.dato == dato){
@@ -40,48 +38,43 @@ public class ListaDoble {
             auxiliarIntercambio = start.nodoSiguiente;
             start = auxiliarIntercambio;
         }
-        else if(end.dato == dato){
-            System.out.println(end.dato);
-            auxiliarIntercambio = end.nodoAnterior;
-            end = auxiliarIntercambio;
-        }
         else{
             buscarPosicion(dato);
             if(auxiliarBusqueda.nodoSiguiente.dato == dato){
                 System.out.println(auxiliarBusqueda.nodoSiguiente.dato);
 
                 auxiliarIntercambio = auxiliarBusqueda.nodoSiguiente.nodoSiguiente;
-                auxiliarIntercambio.nodoAnterior = auxiliarBusqueda;
                 auxiliarBusqueda.nodoSiguiente = auxiliarIntercambio;
 
-            }else{
-                System.out.println("El dato no existe en la lista");
+            }
+            else{
+                System.out.println("El dato no se encuentra en la lista");
             }
         }
-        
     }
 
     private void buscarPosicion(int dato){
         auxiliarBusqueda = start;
 
-        while(auxiliarBusqueda.nodoSiguiente != null && auxiliarBusqueda.nodoSiguiente.dato < dato){
+        while (auxiliarBusqueda.nodoSiguiente.dato < dato ) {
             auxiliarBusqueda = auxiliarBusqueda.nodoSiguiente;
         }
     }
 
-    public void mostrarDatos(){
+    public void mostrar(){
         auxiliarBusqueda = start;
 
         System.out.println(auxiliarBusqueda.dato);
 
-        while(auxiliarBusqueda.nodoSiguiente != null){
+        while (auxiliarBusqueda.nodoSiguiente.dato != start.dato ) {
             auxiliarBusqueda = auxiliarBusqueda.nodoSiguiente;
             System.out.println(auxiliarBusqueda.dato);
-
         }
     }
 
-    ListaDoble(){
-        start = end = auxiliarBusqueda = auxiliarIntercambio = null;
+
+    ListaSimpleCircular(){
+        start = end = null;
+        auxiliarIntercambio = auxiliarBusqueda = null;
     }
 }
