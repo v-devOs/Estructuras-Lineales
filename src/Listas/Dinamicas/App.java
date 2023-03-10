@@ -2,7 +2,7 @@ package Listas.Dinamicas;
 
 public class App {
     public static void main(String[] args) {
-        ListaDobleCircular lista = new ListaDobleCircular();
+        Lista lista = new Lista();
 
         // lista.input(5);
         for (int i = 0; i < 5; i++) {
@@ -13,16 +13,15 @@ public class App {
             lista.input(i);
         }
 
-        // for (int i = 0; i < 10; i++) {
-        //     lista.output(i);
-        // }
+        for (int i = 0; i < 10; i++) {
+            lista.output(i);
+        }
         
         // lista.output(4);
         // lista.output(6);
         // lista.output(0);
         // lista.output(5);
 
-        lista.mostrar();
 
 
         

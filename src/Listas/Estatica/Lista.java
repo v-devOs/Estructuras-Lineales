@@ -112,7 +112,7 @@ public class Lista {
     }
 
     public void mostrar(){
-
+        System.out.println("------------------------");
         for (int i = 0; i < totalDatos; i++) {
             System.out.println(lista[i]);
         }
@@ -121,5 +121,27 @@ public class Lista {
     Lista(int length){
         lista = new int[length];
         totalDatos = 0;
+    }
+}
+
+
+class Main{
+
+    public static void main(String[] args) {
+        Lista lista = new Lista(5);
+
+        lista.input(4);
+        lista.input(3);
+        lista.mostrar();
+
+        lista.output( 10 );
+        lista.input( 20 );
+        lista.input(2);
+        lista.mostrar();
+
+        lista.input(5);
+        lista.input(-8);
+        lista.output(2);
+        lista.mostrar();
     }
 }

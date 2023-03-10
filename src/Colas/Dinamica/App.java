@@ -8,7 +8,7 @@ public class App {
             cola.input(i);
         }
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             cola.output();
         }
     }

@@ -1,28 +1,30 @@
 package Colas.Dinamica;
 
 public class Cola {
-    private Nodo inicio;
+    private Nodo inicio, end;
     private Nodo nodoAux;
 
     public void input(int dato){
         Nodo nodoInput = new Nodo(dato);
 
         if(inicio == null){
-            inicio = nodoInput;
+            end = inicio = nodoInput;
         }
         else{
-            buscarPosicion();
-            nodoAux.nodoSiguiente = nodoInput;
+            end.nodoSiguiente = nodoInput;
+            end = end.nodoSiguiente;
+            // buscarPosicion();
+            // nodoAux.nodoSiguiente = nodoInput;
         }
     }
 
-    private void buscarPosicion(){
-        nodoAux = inicio;
+    // private void buscarPosicion(){
+    //     nodoAux = inicio;
 
-        while(nodoAux.nodoSiguiente != null){
-            nodoAux = nodoAux.nodoSiguiente;
-        }
-    }
+    //     while(nodoAux.nodoSiguiente != null){
+    //         nodoAux = nodoAux.nodoSiguiente;
+    //     }
+    // }
 
     public void output(){
         if(inicio == null){
@@ -38,5 +40,6 @@ public class Cola {
     Cola(){
         inicio = null;
         nodoAux = null;
+        end = null;
     }
 }
